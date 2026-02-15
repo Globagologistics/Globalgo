@@ -130,7 +130,7 @@ export default function Home() {
             className="flex justify-center mb-8"
           >
             <img
-              src="/assets/images/logo1.jpeg"
+              src="https://thumbs.dreamstime.com/b/hand-care-logo-design-template-vector-icon-illustrati-illustration-130551000.jpg"
               alt="Global-Go logo"
               className="w-20 h-20 rounded-full object-cover shadow-2xl shadow-blue-500/30"
             />

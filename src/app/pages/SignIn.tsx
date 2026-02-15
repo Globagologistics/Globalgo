@@ -83,6 +83,8 @@ export default function SignIn() {
         className="w-full max-w-md"
       >
         {/* Logo */}
+        {/* Updated logo image */}
+        <img src="https://thumbs.dreamstime.com/b/hand-care-logo-design-template-vector-icon-illustrati-illustration-130551000.jpg" alt="Global-Go logo" style={{maxWidth:'180px',margin:'0 auto',display:'block'}} />
         <div className="text-center mb-8">
           <Link to="/" className="inline-flex items-center gap-3 mb-6">
             <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#2563EB] to-[#38BDF8] flex items-center justify-center shadow-xl">

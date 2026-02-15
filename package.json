@@ -9,7 +9,7 @@
     "preview": "vite preview",
     "lint": "eslint 'src/**/*.{js,ts,jsx,tsx}' --fix",
     "format": "prettier --write 'src/**/*.{js,ts,jsx,tsx,css,html}'",
-    "deploy": "npm run build && gh-pages -d dist",
+    "deploy": "npm run build && cp dist/index.html dist/404.html && gh-pages -d dist",
     "clean": "rimraf dist",
     "postinstall": ""
   },
@@ -77,14 +77,15 @@
     "@typescript-eslint/parser": "6.11.0",
     "@vitejs/plugin-react": "4.7.0",
     "eslint": "8.50.0",
-    "vite-plugin-pwa": "0.18.2",
     "eslint-plugin-react": "7.34.0",
     "eslint-plugin-react-hooks": "4.6.0",
     "gh-pages": "5.0.0",
     "prettier": "3.8.1",
     "rimraf": "5.0.0",
     "tailwindcss": "4.1.12",
-    "vite": "6.3.5"
+    "vite": "6.3.5",
+    "vite-plugin-gh-pages": "^1.0.1",
+    "vite-plugin-pwa": "^1.2.0"
   },
   "peerDependencies": {
     "react": "18.3.1",

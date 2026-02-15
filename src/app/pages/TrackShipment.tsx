@@ -250,18 +250,18 @@ export default function TrackShipment() {
             className="relative"
           >
             <div className="bg-white rounded-2xl p-2 shadow-lg border border-gray-200">
-              <div className="flex gap-2">
+              <div className="flex flex-col sm:flex-row gap-2 w-full">
                 <input
                   type="text"
                   value={trackingId}
                   onChange={(e) => setTrackingId(e.target.value)}
                   placeholder="Enter Tracking ID (e.g. GG-2026-001)"
-                  className="flex-1 px-6 py-4 bg-gray-50 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#2563EB] text-gray-900 placeholder-gray-500"
+                  className="w-full sm:flex-1 px-4 py-3 sm:px-6 sm:py-4 bg-gray-50 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#2563EB] text-gray-900 placeholder-gray-500"
                 />
                 <button
                   type="submit"
                   disabled={isTracking}
-                  className="px-8 py-4 bg-gradient-to-r from-[#2563EB] to-[#38BDF8] text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-blue-500/50 transition-all duration-300 disabled:opacity-50 flex items-center gap-2"
+                  className="w-full sm:w-auto px-4 py-3 sm:px-8 sm:py-4 bg-gradient-to-r from-[#2563EB] to-[#38BDF8] text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-blue-500/50 transition-all duration-300 disabled:opacity-50 flex items-center justify-center gap-2"
                 >
                   {isTracking ? (
                     <>Tracking...</>
@@ -767,7 +767,7 @@ export default function TrackShipment() {
             className="text-center py-20"
           >
             <img
-              src="/assets/images/logo1.jpeg"
+              src="https://thumbs.dreamstime.com/b/hand-care-logo-design-template-vector-icon-illustrati-illustration-130551000.jpg"
               alt="Global-Go logo"
               className="w-24 h-24 rounded-2xl object-cover mx-auto mb-6 shadow-xl"
             />

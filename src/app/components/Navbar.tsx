@@ -61,7 +61,7 @@ export function Navbar() {
             className="cursor-pointer flex items-center gap-3 group"
           >
             <img
-              src="/assets/images/logo1.jpeg"
+              src="https://thumbs.dreamstime.com/b/hand-care-logo-design-template-vector-icon-illustrati-illustration-130551000.jpg"
               alt="Global-Go logo"
               className="w-12 h-12 rounded-full object-cover shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105"
             />

@@ -7,7 +7,7 @@ import { VitePWA } from 'vite-plugin-pwa'
 export default defineConfig(({ command, mode }) => {
   const isProd = mode === 'production';
   return {
-    base: isProd ? '/<YOUR_REPO_NAME>/' : '/',
+    base: isProd ? '/Globalgo/' : '/',
     plugins: [
       // The React and Tailwind plugins are both required for Make, even if
       // Tailwind is not being actively used – do not remove them
@@ -15,7 +15,7 @@ export default defineConfig(({ command, mode }) => {
       tailwindcss(),
         VitePWA({
           registerType: 'autoUpdate',
-          includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'assets/images/logo1.jpeg'],
+          includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'logo1.jpeg'],
           manifest: {
             name: 'Global-Go Logistics',
             short_name: 'Global-Go',
@@ -23,16 +23,16 @@ export default defineConfig(({ command, mode }) => {
             theme_color: '#2563EB',
             background_color: '#ffffff',
             display: 'standalone',
-            start_url: '/',
+            start_url: isProd ? '/Globalgo/' : '/',
             icons: [
               {
-                src: '/assets/icons/icon-192.svg',
+                src: isProd ? '/Globalgo/icon-192.svg' : '/icon-192.svg',
                 sizes: '192x192',
                 type: 'image/svg+xml',
                 purpose: 'any maskable'
               },
               {
-                src: '/assets/icons/icon-512.svg',
+                src: isProd ? '/Globalgo/icon-512.svg' : '/icon-512.svg',
                 sizes: '512x512',
                 type: 'image/svg+xml',
                 purpose: 'any maskable'
