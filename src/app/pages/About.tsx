@@ -113,7 +113,7 @@ export default function About() {
               </h2>
               <div className="space-y-4 text-gray-700 leading-relaxed">
                 <p>
-                  Founded in 1998, Global-Go emerged from a simple vision: to make
+                  Founded in 1998, Buske Logistics emerged from a simple vision: to make international logistics accessible, reliable, and transparent for businesses of all sizes. What started as a small freight forwarding operation in New York has grown into a global network spanning over 105 countries.
                   international logistics accessible, reliable, and transparent for
                   businesses of all sizes. What started as a small freight forwarding
                   operation in New York has grown into a global network spanning over
@@ -133,7 +133,7 @@ export default function About() {
                   between markets, cultures, and opportunities.
                 </p>
                 <p>
-                  At Global-Go, we believe that every shipment tells a story, and we're
+                  At Buske Logistics, we believe that every shipment tells a story, and we're committed to delivering it with the care and professionalism it deserves.
                   honored to be part of yours. Our mission is to provide seamless,
                   secure, and sustainable logistics solutions that empower businesses
                   to reach new horizons.
@@ -171,7 +171,7 @@ export default function About() {
                     Our success is measured not just in packages delivered, but in
                     relationships built and promises kept. Every day, our team works
                     tirelessly to ensure your shipments arrive safely, on time, and
-                    with the care they deserve. Thank you for trusting Global-Go with
+                    with the care they deserve. Thank you for trusting Buske Logistics with
                     your most important deliveries.
                   </p>
                   <div className="text-right">

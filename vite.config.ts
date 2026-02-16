@@ -7,7 +7,7 @@ import { VitePWA } from 'vite-plugin-pwa'
 export default defineConfig(({ command, mode }) => {
   const isProd = mode === 'production';
   return {
-    base: isProd ? '/Globalgo/' : '/',
+    base: isProd ? '/buske/' : '/',
     plugins: [
       // The React and Tailwind plugins are both required for Make, even if
       // Tailwind is not being actively used – do not remove them
@@ -17,9 +17,9 @@ export default defineConfig(({ command, mode }) => {
           registerType: 'autoUpdate',
           includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'assets/images/logo1.jpeg'],
           manifest: {
-            name: 'Global-Go Logistics',
-            short_name: 'Global-Go',
-            description: 'Fast, reliable shipping with real-time tracking.',
+            name: 'Buske Logistics',
+            short_name: 'Buske',
+            description: 'Your Trusted Global Logistics Partner.',
             theme_color: '#2563EB',
             background_color: '#ffffff',
             display: 'standalone',

@@ -16,6 +16,8 @@ export function Navbar() {
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "Track Shipment", path: "/track" },
+    { name: "Locations", path: "/locations" },
+    { name: "Solutions", path: "/solutions" },
     { name: "About", path: "/about" },
   ];
 
@@ -62,15 +64,15 @@ export function Navbar() {
           >
             <img
               src="https://thumbs.dreamstime.com/b/hand-care-logo-design-template-vector-icon-illustrati-illustration-130551000.jpg"
-              alt="Global-Go logo"
+              alt="Buske Logistics logo"
               className="w-12 h-12 rounded-full object-cover shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105"
             />
             <div className="hidden sm:block">
               <div className="font-bold text-xl text-[#0F1F3D] tracking-tight">
-                Global-Go
+                Buske Logistics
               </div>
               <div className="text-xs text-gray-500 -mt-1">
-                Global Logistics Made Simple
+                Your Trusted Global Logistics Partner
               </div>
             </div>
           </div>

@@ -89,13 +89,13 @@ export default function Home() {
       name: "Sarah Johnson",
       location: "New York, USA",
       rating: 5,
-      comment: "Global-Go has transformed our international shipping. The tracking system is incredibly accurate and customer service is outstanding.",
+      comment: "Buske Logistics has transformed our international shipping. The tracking system is incredibly accurate and customer service is outstanding.",
     },
     {
       name: "Michael Chen",
       location: "Shanghai, China",
       rating: 5,
-      comment: "Reliable, fast, and professional. We've been using Global-Go for 3 years and they never disappoint. Highly recommended!",
+      comment: "Reliable, fast, and professional. We've been using Buske Logistics for 3 years and they never disappoint. Highly recommended!",
     },
     {
       name: "Emma Williams",
@@ -131,7 +131,7 @@ export default function Home() {
           >
             <img
               src="https://thumbs.dreamstime.com/b/hand-care-logo-design-template-vector-icon-illustrati-illustration-130551000.jpg"
-              alt="Global-Go logo"
+              alt="Buske Logistics logo"
               className="w-20 h-20 rounded-full object-cover shadow-2xl shadow-blue-500/30"
             />
           </motion.div>
@@ -143,7 +143,7 @@ export default function Home() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight"
           >
-            Global-Go
+            Buske Logistics
           </motion.h1>
 
           <motion.p
@@ -152,7 +152,7 @@ export default function Home() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-xl md:text-2xl text-gray-300 mb-12 font-light"
           >
-            Global Logistics Made Simple
+            Your Trusted Global Logistics Partner
           </motion.p>
 
           {/* Tracking Form */}
@@ -339,7 +339,7 @@ export default function Home() {
               viewport={{ once: true }}
             >
               <h2 className="text-4xl md:text-5xl font-bold text-[#0F1F3D] mb-6">
-                Why Choose Global-Go?
+                Why Choose Buske Logistics?
               </h2>
               <p className="text-xl text-gray-600 mb-10">
                 The world's most trusted logistics partner, delivering excellence across every mile.

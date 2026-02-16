@@ -3,6 +3,8 @@ import Root from "./pages/Root";
 import Home from "./pages/Home";
 import TrackShipment from "./pages/TrackShipment";
 import About from "./pages/About";
+import Locations from "./pages/Locations";
+import Solutions from "./pages/Solutions";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import NotFound from "./pages/NotFound";
@@ -18,6 +20,8 @@ export const router = createBrowserRouter([
     children: [
       { index: true, Component: Home },
       { path: "track", Component: TrackShipment },
+      { path: "locations", Component: Locations },
+      { path: "solutions", Component: Solutions },
       { path: "about", Component: About },
       { path: "signin", Component: SignIn },
       { path: "signup", Component: SignUp },
@@ -35,5 +39,5 @@ export const router = createBrowserRouter([
     ],
   },
 ], {
-  basename: import.meta.env.PROD ? '/Globalgo/' : '/',
+  basename: import.meta.env.PROD ? '/buske/' : '/',
 });
