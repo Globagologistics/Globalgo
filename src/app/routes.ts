@@ -3,6 +3,8 @@ import Root from "./pages/Root";
 import Home from "./pages/Home";
 import TrackShipment from "./pages/TrackShipment";
 import About from "./pages/About";
+import Locations from "./pages/Locations";
+import Solutions from "./pages/Solutions";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import NotFound from "./pages/NotFound";
@@ -18,6 +20,8 @@ export const router = createBrowserRouter([
     children: [
       { index: true, Component: Home },
       { path: "track", Component: TrackShipment },
+      { path: "locations", Component: Locations },
+      { path: "solutions", Component: Solutions },
       { path: "about", Component: About },
       { path: "signin", Component: SignIn },
       { path: "signup", Component: SignUp },
@@ -35,8 +39,5 @@ export const router = createBrowserRouter([
     ],
   },
 ], {
-  // Use the Vite base URL so the router basename always matches the
-  // path used when the app was built/deployed (e.g. /BUSKE-LOGISTICS.COM/).
-  // `import.meta.env.BASE_URL` includes a trailing slash.
-  basename: import.meta.env.BASE_URL || '/',
+  basename: import.meta.env.PROD ? '/buske/' : '/',
 });

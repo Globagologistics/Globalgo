@@ -768,7 +768,7 @@ export default function TrackShipment() {
           >
             <img
               src="https://thumbs.dreamstime.com/b/hand-care-logo-design-template-vector-icon-illustrati-illustration-130551000.jpg"
-              alt="Global-Go logo"
+              alt="Buske Logistics logo"
               className="w-24 h-24 rounded-2xl object-cover mx-auto mb-6 shadow-xl"
             />
             <h3 className="text-2xl font-semibold text-[#0F1F3D] mb-3">

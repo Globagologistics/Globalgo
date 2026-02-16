@@ -47,14 +47,14 @@ export function Footer() {
           <div>
             <Link to="/" className="flex items-center gap-3 mb-6">
               <img
-                src="https://thumbs.dreamstime.com/b/hand-care-logo-design-template-vector-icon-illustrati-illustration-130551000.jpg"
-                alt="Global-Go logo"
+                src="%BASE_URL%assets/images/buske-logo.jpeg"
+                alt="Buske Logistics logo"
                 className="w-12 h-12 rounded-full object-cover shadow-lg"
               />
               <div>
-                <div className="font-bold text-xl">Global-Go</div>
+                <div className="font-bold text-xl">Buske Logistics</div>
                 <div className="text-xs text-gray-400">
-                  Global Logistics Made Simple
+                  Your Trusted Global Logistics Partner
                 </div>
               </div>
             </Link>
@@ -121,7 +121,7 @@ export function Footer() {
               <li className="flex items-start gap-3">
                 <Mail className="w-5 h-5 text-[#38BDF8] mt-0.5 flex-shrink-0" />
                 <span className="text-gray-400 text-sm">
-                  globagologistics@gmail.com
+                  buskelogistics141@gmail.com
                 </span>
               </li>
               <li className="flex items-start gap-3">
@@ -133,7 +133,7 @@ export function Footer() {
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-[#38BDF8] mt-0.5 flex-shrink-0" />
                 <span className="text-gray-400 text-sm">
-                  4521 Innovation Drive, Charlotte, NC 28202
+                  #7 Gateway Commerce Center Dr. W, Suite 7, Edwardsville, IL 62025
                 </span>
               </li>
             </ul>
@@ -144,7 +144,7 @@ export function Footer() {
         <div className="mt-16 pt-8 border-t border-white/10">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-gray-400 text-sm">
-              © {new Date().getFullYear()} Global-Go. All rights reserved.
+              © {new Date().getFullYear()} Buske Logistics. All rights reserved.
             </p>
             <div className="flex gap-6">
               <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">
