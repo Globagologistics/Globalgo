@@ -34,8 +34,12 @@ if (!supabaseUrl || !supabaseAnonKey) {
         onAuthStateChange: () => ({ data: { subscription: { unsubscribe: () => {} } } }),
       },
       channel: () => ({
-        on: () => ({ subscribe: () => {} }),
-        subscribe: () => {},
+        on: function() { return this; },
+        subscribe: function() { 
+          return { 
+            unsubscribe: async () => {} 
+          }; 
+        },
         unsubscribe: async () => {},
       }),
       storage: {
