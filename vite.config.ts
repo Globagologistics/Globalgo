@@ -13,53 +13,54 @@ export default defineConfig(({ command, mode }) => {
       // Tailwind is not being actively used – do not remove them
       react(),
       tailwindcss(),
-        VitePWA({
-          registerType: 'autoUpdate',
-          includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'assets/images/buske-logo.jpeg'],
-          manifest: {
-            name: 'Buske Logistics',
-            short_name: 'Buske',
-            description: 'Your Trusted Global Logistics Partner.',
-            theme_color: '#2563EB',
-            background_color: '#ffffff',
-            display: 'standalone',
-            start_url: '/',
-            icons: [
-              {
-                src: '/assets/icons/icon-192.svg',
-                sizes: '192x192',
-                type: 'image/svg+xml',
-                purpose: 'any maskable'
+      // Only enable PWA plugin in production to avoid dev server conflicts
+      isProd && VitePWA({
+        registerType: 'autoUpdate',
+        includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'assets/images/buske-logo.jpeg'],
+        manifest: {
+          name: 'Buske Logistics',
+          short_name: 'Buske',
+          description: 'Your Trusted Global Logistics Partner.',
+          theme_color: '#2563EB',
+          background_color: '#ffffff',
+          display: 'standalone',
+          start_url: '/',
+          icons: [
+            {
+              src: '/assets/icons/icon-192.svg',
+              sizes: '192x192',
+              type: 'image/svg+xml',
+              purpose: 'any maskable'
+            },
+            {
+              src: '/assets/icons/icon-512.svg',
+              sizes: '512x512',
+              type: 'image/svg+xml',
+              purpose: 'any maskable'
+            }
+          ]
+        },
+        workbox: {
+          runtimeCaching: [
+            {
+              urlPattern: /\/.*/,
+              handler: 'NetworkFirst',
+              options: {
+                cacheName: 'pages-cache',
               },
-              {
-                src: '/assets/icons/icon-512.svg',
-                sizes: '512x512',
-                type: 'image/svg+xml',
-                purpose: 'any maskable'
-              }
-            ]
-          },
-          workbox: {
-            runtimeCaching: [
-              {
-                urlPattern: /\/.*/,
-                handler: 'NetworkFirst',
-                options: {
-                  cacheName: 'pages-cache',
-                },
+            },
+            {
+              urlPattern: /\.(?:png|jpg|jpeg|svg|gif)$/,
+              handler: 'CacheFirst',
+              options: {
+                cacheName: 'image-cache',
+                expiration: { maxEntries: 50, maxAgeSeconds: 60 * 60 * 24 * 30 },
               },
-              {
-                urlPattern: /\.(?:png|jpg|jpeg|svg|gif)$/,
-                handler: 'CacheFirst',
-                options: {
-                  cacheName: 'image-cache',
-                  expiration: { maxEntries: 50, maxAgeSeconds: 60 * 60 * 24 * 30 },
-                },
-              },
-            ],
-          },
-        }),
-    ],
+            },
+          ],
+        },
+      }),
+    ].filter(Boolean),
     resolve: {
       alias: {
         // Alias @ to the src directory
