@@ -35,5 +35,8 @@ export const router = createBrowserRouter([
     ],
   },
 ], {
-  basename: import.meta.env.PROD ? '/Globalgo/' : '/',
+  // Use the Vite base URL so the router basename always matches the
+  // path used when the app was built/deployed (e.g. /BUSKE-LOGISTICS.COM/).
+  // `import.meta.env.BASE_URL` includes a trailing slash.
+  basename: import.meta.env.BASE_URL || '/',
 });
