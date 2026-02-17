@@ -9,7 +9,7 @@
     "preview": "vite preview",
     "lint": "eslint 'src/**/*.{js,ts,jsx,tsx}' --fix",
     "format": "prettier --write 'src/**/*.{js,ts,jsx,tsx,css,html}'",
-    "deploy": "npm run build && cp dist/index.html dist/404.html && gh-pages -d dist",
+    "deploy": "npm run build && node ./scripts/copy404.js && gh-pages -d dist",
     "clean": "rimraf dist",
     "postinstall": ""
   },
