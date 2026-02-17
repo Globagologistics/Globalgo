@@ -16,7 +16,7 @@ export default defineConfig(({ command, mode }) => {
       // Only enable PWA plugin in production to avoid dev server conflicts
       isProd && VitePWA({
         registerType: 'autoUpdate',
-        includeAssets: ['favicon.ico', 'apple-touch-icon.png'],
+        includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'icon-192.svg', 'icon-512.svg'],
         manifest: {
           name: 'Buske Logistics',
           short_name: 'Buske',
@@ -27,13 +27,13 @@ export default defineConfig(({ command, mode }) => {
           start_url: '/BUSKE-LOGISTICS.COM/',
           icons: [
             {
-              src: '/BUSKE-LOGISTICS.COM/assets/icons/icon-192.svg',
+              src: '/BUSKE-LOGISTICS.COM/icon-192.svg',
               sizes: '192x192',
               type: 'image/svg+xml',
               purpose: 'any maskable'
             },
             {
-              src: '/BUSKE-LOGISTICS.COM/assets/icons/icon-512.svg',
+              src: '/BUSKE-LOGISTICS.COM/icon-512.svg',
               sizes: '512x512',
               type: 'image/svg+xml',
               purpose: 'any maskable'

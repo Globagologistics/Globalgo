@@ -6,9 +6,8 @@ const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 let supabase: any;
 
 if (!supabaseUrl || !supabaseAnonKey) {
-  if (!import.meta.env.PROD) {
-    // In development, provide a stub to avoid crashes
-    console.warn('⚠️ Supabase credentials not found. Using stub client for development.');
+  // Provide a stub for both development and preview/demo builds without credentials
+  console.warn('⚠️ Supabase credentials not found. Using stub client for preview mode.');
     
     // Simple in-memory DB for development to simulate Supabase
     const inMemoryDB: Record<string, any[]> = {
@@ -151,9 +150,6 @@ if (!supabaseUrl || !supabaseAnonKey) {
         }),
       },
     };
-  } else {
-    throw new Error('Missing Supabase credentials in environment variables');
-  }
 } else {
   supabase = createClient(supabaseUrl, supabaseAnonKey);
 }
