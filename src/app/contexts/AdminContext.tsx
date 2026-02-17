@@ -114,6 +114,11 @@ export const AdminProvider = ({ children }: { children: ReactNode }) => {
 
   // Fetch shipments on mount
   useEffect(() => {
+    if (!adminId) {
+      console.log('⏳ AdminContext: waiting for adminId before fetching shipments');
+      return;
+    }
+
     const fetchShipments = async () => {
       try {
         setLoading(true);
@@ -186,7 +191,7 @@ export const AdminProvider = ({ children }: { children: ReactNode }) => {
 
     fetchShipments();
 
-    // Subscribe to real-time changes
+    // Subscribe to real-time changes (only when adminId is present)
     const subscription = supabase
       .channel('admin-shipments')
       .on(
@@ -200,7 +205,11 @@ export const AdminProvider = ({ children }: { children: ReactNode }) => {
       .subscribe();
 
     return () => {
-      subscription.unsubscribe();
+      try {
+        subscription.unsubscribe();
+      } catch (e) {
+        // ignore unsubscribe errors
+      }
     };
   }, [adminId]);
 

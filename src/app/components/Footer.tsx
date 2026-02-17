@@ -84,7 +84,7 @@ export function Footer() {
           <div className="lg:col-span-1">
             <Link to="/" className="flex items-center gap-3 mb-4">
               <img
-                src="/assets/images/buske-logo.jpeg"
+                src="https://media.licdn.com/dms/image/v2/C560BAQGvHNiZmDL7-g/company-logo_200_200/company-logo_200_200/0/1658438857743/buske_logistics_logo?e=2147483647&v=beta&t=iEthzy1XB3dnhzxGhvblN8T-WwtphunHvL51pWRD__8"
                 alt="Buske Logistics logo"
                 className="w-10 h-10 rounded-full object-cover shadow-lg"
               />
