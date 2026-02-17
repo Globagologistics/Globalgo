@@ -39,5 +39,6 @@ export const router = createBrowserRouter([
     ],
   },
 ], {
-  basename: import.meta.env.PROD ? '/buske/' : '/',
+  // Use Vite-provided base URL so router works on GitHub Pages and locally
+  basename: import.meta.env.BASE_URL || '/',
 });
