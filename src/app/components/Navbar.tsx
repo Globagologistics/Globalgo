@@ -1,5 +1,6 @@
+import React from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Package, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { motion } from "motion/react";
 import { useState, useContext, useEffect } from "react";
 

@@ -149,7 +149,7 @@ export function Footer() {
                   const evt = deferredPrompt || (window as any).deferredPWAInstallPrompt;
                   if (!evt) return;
                   evt.prompt();
-                  const choice = await evt.userChoice;
+                  await evt.userChoice;
                   setShowInstall(false);
                   try { delete (window as any).deferredPWAInstallPrompt; } catch {}
                 }} className="text-gray-200 bg-white/10 hover:bg-white/20 px-3 py-1.5 rounded text-xs transition-colors">Install App</button>

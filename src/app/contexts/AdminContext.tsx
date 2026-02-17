@@ -76,12 +76,12 @@ export const AdminProvider = ({ children }: { children: ReactNode }) => {
   const [adminId, setAdminId] = useState<string>('');
 
   // Helper: convert stored path or URL to a usable public URL from Supabase Storage
-  const resolveStorageUrl = (pathOrUrl: any, bucket: 'shipment-images' | 'driver-images' | 'route-screenshots' = 'shipment-images') => {
+  const resolveStorageUrl = (pathOrUrl: string | null | undefined, bucket: 'shipment-images' | 'driver-images' | 'route-screenshots' = 'shipment-images'): string => {
     if (!pathOrUrl) return '';
     if (typeof pathOrUrl === 'string' && pathOrUrl.startsWith('http')) return pathOrUrl;
     try {
       const { data } = supabase.storage.from(bucket).getPublicUrl(pathOrUrl);
-      return (data as any)?.publicUrl || pathOrUrl;
+      return (data as { publicUrl: string })?.publicUrl || pathOrUrl;
     } catch (e) {
       return pathOrUrl;
     }
@@ -146,7 +146,7 @@ export const AdminProvider = ({ children }: { children: ReactNode }) => {
         console.log('✅ Fetched', data.length, 'shipments');
         
         // Transform DB shipments to local format
-        const transformedShipments: Shipment[] = (data as any[]).map((ship: any) => {
+        const transformedShipments: Shipment[] = (data as DBShipment[]).map((ship: DBShipment) => {
           console.log(`📦 Transforming shipment ${ship.id} with ${ship.checkpoints?.length || 0} checkpoints`);
           return {
             id: ship.id,
@@ -219,7 +219,7 @@ export const AdminProvider = ({ children }: { children: ReactNode }) => {
 
   const addShipment = useCallback(
     async (
-      data: any
+      data: Partial<Shipment>
     ) => {
       try {
         setLoading(true);
@@ -235,7 +235,7 @@ export const AdminProvider = ({ children }: { children: ReactNode }) => {
         // Upload route screenshot if provided
         let routeImageUrl: string | undefined = undefined;
         if (data.routeScreenshot) {
-          const rs = data.routeScreenshot as any;
+          const rs = data.routeScreenshot as File | FileList | null;
           const file = rs instanceof File ? rs : rs instanceof FileList ? rs[0] : null;
           if (file) {
             const { url, error } = await shipmentService.uploadImage('route-screenshots', file, id);
@@ -246,7 +246,7 @@ export const AdminProvider = ({ children }: { children: ReactNode }) => {
         }
 
         // Create shipment in Supabase
-        const shipmentData: any = {
+        const shipmentData: Partial<DBShipment> & { id: string; admin_id: string } = {
           id,
           admin_id: adminId,
           sender_name: data.senderName || '',
