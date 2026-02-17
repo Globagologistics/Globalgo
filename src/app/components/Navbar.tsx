@@ -1,7 +1,10 @@
-import { Link, useLocation, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Package, Menu, X } from "lucide-react";
 import { motion } from "motion/react";
 import { useState, useContext, useEffect } from "react";
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type BeforeInstallPromptEvent = any;
 import { AdminContext } from "../contexts/AdminContext";
 
 export function Navbar() {

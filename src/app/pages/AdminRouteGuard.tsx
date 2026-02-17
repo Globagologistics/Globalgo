@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Outlet } from 'react-router';
+import { Outlet } from 'react-router-dom';
 import NotFound from './NotFound';
 import { AdminContext } from '../contexts/AdminContext';
 

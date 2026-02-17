@@ -1,6 +1,9 @@
 import React from "react";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type BeforeInstallPromptEvent = any;
 import { Mail, Phone, Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
 import { AdminContext } from "../contexts/AdminContext";
 

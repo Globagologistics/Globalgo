@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useShipmentWithCheckpoints } from '../../hooks/useSupabase';
 import * as shipmentService from '../../services/shipmentService';
 import { StarRating } from '../components/StarRating';

@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import { Copy, Check, Plus, Search, Filter, Eye, Edit2, Trash2, Truck, Package, AlertCircle } from 'lucide-react';
 import { motion } from 'motion/react';
 import { AdminContext } from '../contexts/AdminContext';

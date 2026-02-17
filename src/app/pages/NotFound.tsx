@@ -1,3 +1,4 @@
+import React from "react";
 import { Link } from "react-router";
 import { motion } from "motion/react";
 import { PackageX, Home, ArrowLeft } from "lucide-react";
