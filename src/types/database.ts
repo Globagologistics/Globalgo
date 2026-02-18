@@ -13,9 +13,7 @@ export interface Checkpoint {
   shipment_id: string;
   location: string;
   checkpoint_order: number;
-  status: 'pending' | 'current' | 'completed' | 'stopped';
-  // UI-only computed position (0-100)
-  positionPercent?: number;
+  status: 'pending' | 'current' | 'completed';
   created_at: string;
   updated_at: string;
 }
@@ -57,6 +55,14 @@ export interface Shipment {
   // Stop Fields
   stopped: boolean;
   stop_reason?: string;
+  stop_timestamp?: string;
+  
+  // Terminate Fields
+  terminated?: boolean;
+  terminate_timestamp?: string;
+  
+  // Progress Bar Visual Pause (independent of shipment pause)
+  progress_bar_paused?: boolean;
   
   // Tracking
   current_checkpoint_index: number;

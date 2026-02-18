@@ -117,22 +117,29 @@ export default function TrackShipment() {
         remaining: formatCountdownTime(found.countdown_start_time, hours),
       });
     } else if (found.paused) {
-      // If paused, return current progress
-      progress = calculateCountdownProgress(found.countdown_start_time, hours);
+      // If paused, freeze progress at pause time if provided
+      if (found.pause_timestamp) {
+        const startMs = new Date(found.countdown_start_time).getTime();
+        const asOf = new Date(found.pause_timestamp).getTime();
+        const elapsed = asOf - startMs;
+        const totalMs = hours * 3600 * 1000;
+        if (elapsed <= 0) progress = 0;
+        else if (elapsed >= totalMs) progress = 100;
+        else progress = Math.round((elapsed / totalMs) * 100);
+      } else {
+        progress = calculateCountdownProgress(found.countdown_start_time, hours);
+      }
     } else if (found.stopped) {
-      // When stopped, freeze progress at the moment it was stopped (use stop_timestamp if available)
-      try {
-        if (found.stop_timestamp) {
-          const stopTime = new Date(found.stop_timestamp).getTime();
-          const start = new Date(found.countdown_start_time).getTime();
-          const totalDurationMs = hours * 3600 * 1000;
-          const elapsed = Math.max(0, Math.min(totalDurationMs, stopTime - start));
-          progress = Math.round((elapsed / totalDurationMs) * 100) || 0;
-        } else {
-          // Fallback to current elapsed percentage if stop timestamp isn't present
-          progress = calculateCountdownProgress(found.countdown_start_time, hours);
-        }
-      } catch (e) {
+      // When stopped, freeze progress at stop time if provided
+      if (found.stop_timestamp) {
+        const startMs = new Date(found.countdown_start_time).getTime();
+        const asOf = new Date(found.stop_timestamp).getTime();
+        const elapsed = asOf - startMs;
+        const totalMs = hours * 3600 * 1000;
+        if (elapsed <= 0) progress = 0;
+        else if (elapsed >= totalMs) progress = 100;
+        else progress = Math.round((elapsed / totalMs) * 100);
+      } else {
         progress = calculateCountdownProgress(found.countdown_start_time, hours);
       }
     }
@@ -195,6 +202,7 @@ export default function TrackShipment() {
       countdownStartTime: found.countdown_start_time,
       paused: found.paused,
       stopped: found.stopped,
+      progressBarPaused: found.progress_bar_paused || false,
     });
     console.log('📦 Shipment data updated, progress:', progress);
   };
@@ -353,7 +361,7 @@ export default function TrackShipment() {
               </div>
 
               {shipmentData.status === 'Stopped' && (
-                <div className="mb-6 p-4 bg-red-100 border border-red-300 rounded-lg">
+                <div className="mb-6 p-4 bg-red-100 border border-red-300 rounded-lg flex flex-col items-center">
                   <p className="text-red-700 font-semibold mb-3">⚠️ This shipment has been stopped!</p>
                   <a
                     href="https://wa.me/13364596552?text=Hello%20I%20need%20assistance%20with%20my%20shipment"
@@ -374,13 +382,14 @@ export default function TrackShipment() {
                   checkpoints={shipmentData.checkpoints}
                   status={shipmentData.status}
                   vehiclesCount={shipmentData.vehiclesCount || 1}
+                  isVisuallyPaused={shipmentData.progressBarPaused}
                 />
                 {/* Countdown Timer Display */}
                 {shipmentData.countdownDuration && shipmentData.countdownStartTime && (
-                  <div className="mt-3 p-3 bg-gradient-to-r from-orange-50 to-amber-50 border border-orange-200 rounded-lg">
+                  <div className={`mt-3 p-3 rounded-lg border ${shipmentData.progressBarPaused ? 'bg-gray-100 border-gray-300' : 'bg-gradient-to-r from-orange-50 to-amber-50 border-orange-200'}`}>
                     <div className="flex items-center justify-between">
-                      <span className="text-sm font-medium text-orange-700">⏱️ Countdown Timer</span>
-                      <span className="text-sm font-bold text-orange-600">
+                      <span className={`text-sm font-medium ${shipmentData.progressBarPaused ? 'text-gray-500' : 'text-orange-700'}`}>⏱️ Countdown Timer</span>
+                      <span className={`text-sm font-bold ${shipmentData.progressBarPaused ? 'text-gray-400' : 'text-orange-600'}`}>
                         {formatCountdownTime(shipmentData.countdownStartTime, shipmentData.countdownDuration)}
                       </span>
                     </div>
@@ -791,6 +800,29 @@ export default function TrackShipment() {
               Track your shipment in real-time and get detailed information about its journey
             </p>
           </motion.div>
+        )}
+
+        {/* Terminate Message Modal */}
+        {shipmentData && shipmentData.terminated && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              className="bg-white rounded-2xl p-8 max-w-md mx-4 shadow-2xl text-center"
+            >
+              <div className="mb-4 text-5xl">🚫</div>
+              <h2 className="text-2xl font-bold text-red-600 mb-4">Shipment Terminated</h2>
+              <p className="text-gray-700 mb-6">
+                This shipment or delivery has been terminated. Please contact the sender or our customer care service for more enquiry.
+              </p>
+              <a
+                href="/"
+                className="inline-block px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-all duration-300"
+              >
+                ← Back to Home
+              </a>
+            </motion.div>
+          </div>
         )}
       </div>
     </div>

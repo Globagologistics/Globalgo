@@ -127,6 +127,19 @@ CREATE POLICY IF NOT EXISTS "Allow checkpoint creation" ON public.checkpoints
 ALTER TABLE public.shipments
   ADD COLUMN IF NOT EXISTS images TEXT[] DEFAULT '{}';
 
+-- Add missing columns for stop/terminate/progress bar pause features
+ALTER TABLE public.shipments
+  ADD COLUMN IF NOT EXISTS stop_timestamp TIMESTAMP WITH TIME ZONE;
+
+ALTER TABLE public.shipments
+  ADD COLUMN IF NOT EXISTS terminated BOOLEAN DEFAULT FALSE;
+
+ALTER TABLE public.shipments
+  ADD COLUMN IF NOT EXISTS terminate_timestamp TIMESTAMP WITH TIME ZONE;
+
+ALTER TABLE public.shipments
+  ADD COLUMN IF NOT EXISTS progress_bar_paused BOOLEAN DEFAULT FALSE;
+
 -- Ensure default admin user exists
 INSERT INTO public.users (id, email, user_type, full_name)
 VALUES ('00000000-0000-0000-0000-000000000000', 'admin@buske.local', 'admin', 'Default Admin')

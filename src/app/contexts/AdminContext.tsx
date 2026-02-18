@@ -33,6 +33,7 @@ export interface Shipment {
   driverExperience?: string;
   stopped?: boolean;
   stopReason?: string;
+  stopTimestamp?: string;
   paused?: boolean;
   countdownDuration?: number;
   countdownStartTime?: string;
